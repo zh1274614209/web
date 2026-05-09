@@ -1,33 +1,19 @@
 <div id="app"></div>
 
 <script type="text/javascript">
-  localStorage.clear();
-  sessionStorage.clear();
-
-  var webSdkScript = document.createElement("script");
-  webSdkScript.src =
-    "https://lf-cdn.coze.cn/obj/unpkg/flow-platform/builder-web-sdk/0.1.1-beta.1/dist/umd/index.js";
+  var webSdkScript = document.createElement('script');
+  webSdkScript.src = 'https://lf-cdn.coze.cn/obj/unpkg/flow-platform/builder-web-sdk/0.1.1-beta.1/dist/umd/index.js';
   document.head.appendChild(webSdkScript);
 
   webSdkScript.onload = function () {
-    const studentId =
-      "student_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8);
-
-    if (window.cozeClient) {
-      window.cozeClient.destroy();
-    }
-
-    window.cozeClient = new CozeWebSDK.AppWebSDK({
-      token: "cztei_q6567GpfAg721ZPjMoSbidU9zM8DoCDVi0hlSwxoR0HAx1ivTwP3EYV5b5IKiHFjE",
+    new CozeWebSDK.AppWebSDK({
+      token: "pat_pZwKVcuOFDUvakXc0STKD5z2DriG2x2OMfTgDg2FMK35R43jvOqkYEpSiv0CL3sw",
       appId: "7633787104434389019",
       container: "#app",
-      ui: {
-        className: "coze-classroom"
-      },
       userInfo: {
-        id: studentId,
-        nickname: "学生",
-        url: "https://lf-coze-web-cdn.coze.cn/obj/eden-cn/lm-lgvj/ljhwZthlaukjlkulzlp/coze/coze-logo.png"
+        id: "student_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8),
+        url: "https://lf-coze-web-cdn.coze.cn/obj/eden-cn/lm-lgvj/ljhwZthlaukjlkulzlp/coze/coze-logo.png",
+        nickname: "学生"
       }
     });
   };
